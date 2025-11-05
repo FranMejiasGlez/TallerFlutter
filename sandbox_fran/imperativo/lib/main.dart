@@ -1,100 +1,115 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MiAplicacion());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class MiAplicacion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Prueba de Scaffold',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Columnas y filas'),
+      title: 'Ejemplo de Navegación',
+      home: PantallaPrincipal(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+// --- Pantalla Principal ---
+class PantallaPrincipal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: const Text("Columnas y filas")),
-      body: Column(
-        children: [
-          const Row(
+      appBar: AppBar(title: const Text('Pantalla Principal')),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+              'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+            ),
+            fit: BoxFit.cover, // This will cover the entire container
+          ),
+        ),
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
                 children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                ],
-              ),
-              Column(
-                children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                ],
-              ),
-              Column(
-                children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
+                  Container(
+                    child: Center(
+                      child: Text(
+                        "Bienvenido a Migaz. Preparado para cocinar?",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 80),
+                    child: Center(
+                      child: Text(
+                        "Iniciar Sesion",
+                        style: TextStyle(fontSize: 35),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 500,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text("E-mail", style: TextStyle(fontSize: 20)),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                    color: Colors.grey,
+                    width: 500,
+                    child: TextField(
+                      decoration: InputDecoration(border: InputBorder.none),
+                    ),
+                  ),
+                  Container(
+                    width: 500,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text("Contrasenia", style: TextStyle(fontSize: 20)),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color: Colors.grey,
+                    width: 500,
+                    child: TextField(
+                      decoration: InputDecoration(border: InputBorder.none),
+                    ),
+                  ),
                 ],
               ),
             ],
           ),
-          const Row(
-            children: [
-              Column(
-                children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                ],
-              ),
-              Column(
-                children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                ],
-              ),
-              Column(
-                children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                ],
-              ),
-            ],
-          ),
-          const Row(
-            children: [
-              Column(
-                children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                ],
-              ),
-              Column(
-                children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                ],
-              ),
-              Column(
-                children: [
-                  Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                ],
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+// --- Segunda Pantalla ---
+class SegundaPantalla extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Segunda Pantalla')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Volver a la Principal'),
+        ),
+      ),
     );
   }
 }
