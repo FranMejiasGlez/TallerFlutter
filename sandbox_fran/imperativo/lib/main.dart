@@ -44,13 +44,14 @@ class PantallaPrincipal extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    width:200,
+                    width: 200,
                     height: 200,
+                    padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         image: NetworkImage(
-                          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                          'https://raw.githubusercontent.com/FranMejiasGlez/TallerFlutter/main/sandbox_fran/imperativo/img/Logo.png',
                         ),
                         fit: BoxFit.cover,
                       ),
