@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -19,14 +21,19 @@ class PantallaPrincipal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Pantalla Principal')),
+      //appBar: AppBar(title: const Text('Pantalla Principal')),
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-              'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-            ),
-            fit: BoxFit.cover, // This will cover the entire container
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment(0.8, 1),
+            colors: <Color>[
+              Color(0xFF25CCAD),
+              Color(0xFFFEC601),
+              Color(0x1AF7F7F7),
+              Color(0xFFEA7317),
+              Color(0xFF4F5D75),
+            ],
           ),
         ),
         padding: const EdgeInsets.all(20.0),
@@ -36,6 +43,19 @@ class PantallaPrincipal extends StatelessWidget {
             children: [
               Column(
                 children: [
+                  Container(
+                    width:200,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                        ),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                   Container(
                     child: Center(
                       child: Text(
@@ -75,7 +95,7 @@ class PantallaPrincipal extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Contrasenia", style: TextStyle(fontSize: 20)),
+                        Text("Contraseña", style: TextStyle(fontSize: 20)),
                       ],
                     ),
                   ),
